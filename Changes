@@ -3,3 +3,6 @@ Revision history for Perl extension Text::Bind.
 0.01  Thu Jan 27 1998
 	- initial bundled release
 
+0.02  Tue Mar 30 1999
+	- add support data site loops
+	- an array can be bound to a data site

@@ -1,7 +1,7 @@
 README for Text::Bind v0.01
 
 ---------------------------------------------------------------------------
-    Copyright (C) 1997          Earl Hood, ehood@medusa.acs.uci.edu
+    Copyright (C) 1997-1999	Earl Hood, earlhood@usa.net
         All rights reserved.
   
     This program is free software; you can redistribute it and/or
@@ -11,8 +11,8 @@ README for Text::Bind v0.01
 SUMMARY
 
 Text::Bind allows you to bind Perl structures (strings, routines,
-filehandles, object) to specific locations (called *data sites*) in
-text files.
+filehandles, objects, and arrays) to specific locations (called *data
+sites*) in text files.
 
 The main purpose of this module is to support HTML templates for
 CGI programs. Therefore, HTML pages design can be kept separate from
@@ -43,6 +43,6 @@ Documentation is in POD format and should automatically get installed
 with the module(s).
 
 ---------------------------------------------------------------------------
-Earl Hood, ehood@medusa.acs.uci.edu
+Earl Hood, earlhood@usa.net
 http://www.oac.uci.edu/indiv/ehood/
-98/01/27 13:04:13
+99/03/30 22:26:07
