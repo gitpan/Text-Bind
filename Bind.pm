@@ -1,6 +1,6 @@
 ##---------------------------------------------------------------------------##
 ##  File:
-##      @(#) Bind.pm 1.4 99/04/24 19:38:46
+##      @(#) Bind.pm 1.5 99/07/07 21:53:55
 ##  Author:
 ##      Earl Hood       earlhood@bigfoot.com
 ##  Description:
@@ -18,7 +18,7 @@ package Text::Bind;
 
 use strict;
 use vars '$VERSION';
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 ##---------------------------------------------------------------------------##
 
@@ -187,7 +187,7 @@ sub _eval_bindings {
 					if defined &$tmp;
 				    last ARRAY;
 				}
-				if ($tmp =~ /GLOB/) {
+				if (ref($tmp) && $tmp =~ /GLOB/) {
 				    local $_; while (<$tmp>) {
 					print $outfh $_;
 				    }
@@ -207,7 +207,7 @@ sub _eval_bindings {
 			# Filehandle: Have to use regex to check
 			# for filehandle in case a filehandle class
 			# is in use.
-			if ($bind =~ /GLOB/) {
+			if (ref($bind) && $bind =~ /GLOB/) {
 			    local $_;
 			    while (<$bind>) {
 				print $outfh $_;
