@@ -1,13 +1,13 @@
 ##---------------------------------------------------------------------------##
 ##  File:
-##      @(#) Bind.pm 1.3 99/03/30 22:28:42
+##      @(#) Bind.pm 1.4 99/04/24 19:38:46
 ##  Author:
-##      Earl Hood       earlhood@usa.net
+##      Earl Hood       earlhood@bigfoot.com
 ##  Description:
 ##	Class for supporting HTML template pages for perl CGI programs.
 ##	More explanation at end of source file.
 ##---------------------------------------------------------------------------##
-##  Copyright (C) 1997-1999	Earl Hood, earlhood@usa.net
+##  Copyright (C) 1997-1999	Earl Hood, earlhood@bigfoot.com
 ##	All rights reserved.
 ##
 ##  This program is free software; you can redistribute it and/or
@@ -18,7 +18,7 @@ package Text::Bind;
 
 use strict;
 use vars '$VERSION';
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 ##---------------------------------------------------------------------------##
 
@@ -118,15 +118,18 @@ sub _eval_bindings {
     my $outfh	= shift;
     my $text	= shift;
 
+    return 0  unless defined($outfh) && defined($text);
+
     # Split on data site markup
     my @list = split(/##PL_([^#]+)##/, $text);
 
     # First item of list is regular data, so just output.
-    print $outfh shift(@list);
+    my $data = shift(@list);
+    print $outfh $data  if defined($data);
 
     # If other items are still in the list, then there are data
     # sites to resolve.
-    my($site, $data, $name, $value, $bind, $status, $tmp);
+    my($site, $name, $value, $bind, $status, $tmp);
     my $retval = 0;
 
     LINE: while (@list) {
@@ -619,7 +622,7 @@ Multiple data site loops cannot exist on a single line.
 
 =head1 AUTHOR
 
-Earl Hood, earlhood@usa.net
+Earl Hood, earlhood@bigfoot.com
 
 http://www.oac.uci.edu/indiv/ehood
 
